@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Th. | Design Estratégico & Posicionamento</title>
+    <meta name="description" content="Transformo presença digital em posicionamento estratégico, autoridade e crescimento consistente. Design estratégico para marcas que querem crescer.">
+    <meta name="keywords" content="designer gráfico, identidade visual, manual de marca, design estratégico, posicionamento de marca">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600&display=swap" rel="stylesheet">
+
+
+<style>
+@charset "UTF-8";
+
+:root {
+    --color-bg-dark: #182125;
+    --color-bg-light: #253439;
+    --color-primary: #254857;
+    --color-text-light: #FFFFFF;
+    --color-text-dark: #000000;
+    --color-text-muted: rgba(255, 255, 255, 0.7);
+    --color-border: rgba(255, 255, 255, 0.1);
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Nunito Sans', sans-serif;
+    --container-width: 1200px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+    --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: initial; font-size: 16px; }
+
+body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; transition: color var(--transition-fast); }
+ul { list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-md);
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    font-weight: 300;
+    margin-bottom: var(--spacing-lg);
+}
+
+.text-center { text-align: center; }
+
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.container-narrow { max-width: 900px; }
+.container-form { max-width: 800px; }
+
+section { padding: var(--spacing-xl) 0; position: relative; }
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 100%; height: 0%;
+    background-color: #1a333d;
+    transition: height var(--transition-smooth);
+    z-index: 0;
+}
+
+.btn-primary:hover::after { height: 100%; }
+
+.btn-primary span, .btn-primary svg {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-sm { padding: 0.75rem 1.5rem; font-size: 0.875rem; }
+
+/* Header */
+.site-header {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    padding: var(--spacing-md) 0;
+    z-index: 100;
+    transition: background-color var(--transition-fast), padding var(--transition-fast);
+}
+
+.site-header.scrolled {
+    background-color: rgba(24, 33, 37, 0.95);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: var(--color-text-light);
+}
+
+.main-nav { display: none; gap: var(--spacing-md); }
+
+@media (min-width: 768px) { .main-nav { display: flex; } }
+
+.main-nav a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background-color: var(--color-text-light);
+    transition: width var(--transition-smooth);
+}
+
+.main-nav a:hover { opacity: 1; }
+.main-nav a:hover::after { width: 100%; }
+
+/* Hero */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .hero-container { grid-template-columns: 1.2fr 0.8fr; }
+}
+
+.sub-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: var(--spacing-md);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-primary);
+    background-color: rgba(37, 72, 87, 0.1);
+    color: var(--color-primary);
+    border-radius: 2px;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+    font-weight: 300;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.hero-graphic {
+    position: relative;
+    height: 400px;
+    display: none;
+}
+
+@media (min-width: 992px) { .hero-graphic { display: block; } }
+
+.abstract-shape {
+    position: absolute;
+    border: 1px solid var(--color-primary);
+    opacity: 0.5;
+    transition: transform 0.5s ease-out;
+}
+
+.shape-1 {
+    width: 300px; height: 400px;
+    top: 0; right: 50px;
+    border-radius: 200px 200px 0 0;
+    background: linear-gradient(135deg, rgba(37, 72, 87, 0.2) 0%, rgba(24, 33, 37, 0) 100%);
+}
+
+.shape-2 {
+    width: 150px; height: 150px;
+    bottom: 50px; left: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shape-3 {
+    width: 200px; height: 100px;
+    top: 100px; right: -20px;
+    border: 1px solid var(--color-primary);
+}
+
+/* Sobre */
+.sobre-section {
+    background-color: var(--color-bg-light);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.sobre-content { max-width: 900px; margin: 0 auto; }
+
+.sobre-text p {
+    font-size: clamp(1.25rem, 2vw, 1.875rem);
+    font-weight: 300;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-muted);
+}
+
+.sobre-text p:first-child {
+    font-family: var(--font-heading);
+    color: var(--color-text-light);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* Portfolio */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+}
+
+.project-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    background-color: var(--color-bg-light);
+    overflow: hidden;
+}
+
+.project-placeholder {
+    width: 100%; height: 100%;
+    background: linear-gradient(45deg, var(--color-bg-dark), var(--color-bg-light));
+    transition: transform var(--transition-smooth);
+}
+
+.project-card:hover .project-placeholder { transform: scale(1.05); }
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(24, 33, 37, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-style: italic;
+    backdrop-filter: blur(2px);
+}
+
+.project-card:hover .project-overlay { opacity: 1; }
+
+.project-info { padding-top: var(--spacing-xs); }
+
+.project-tag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin: 0;
+    transition: color var(--transition-fast);
+}
+
+.project-card:hover .project-title { color: var(--color-primary); }
+
+/* Serviços */
+.servicos-section { background-color: var(--color-bg-light); }
+
+.servicos-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.servico-item {
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: padding var(--transition-smooth);
+}
+
+.servico-item:first-child { border-top: 1px solid var(--color-border); }
+
+.servico-item h3 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 0.5rem;
+    transition: color var(--transition-fast);
+}
+
+.servico-item p {
+    color: var(--color-text-muted);
+    font-weight: 300;
+    max-width: 600px;
+}
+
+.servico-item:hover { padding-left: var(--spacing-sm); }
+
+.servico-item:hover h3 {
+    color: var(--color-primary);
+    font-style: italic;
+}
+
+/* Formulário */
+.contato-section { background-color: var(--color-bg-dark); }
+
+.contato-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.strategic-form {
+    background-color: var(--color-bg-light);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) { .strategic-form { padding: var(--spacing-md); } }
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) { .form-row { grid-template-columns: 1fr 1fr; } }
+
+.form-group { margin-bottom: var(--spacing-md); }
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+input[type="text"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: rgba(37, 72, 87, 0.05);
+}
+
+input::placeholder, textarea::placeholder { color: rgba(255, 255, 255, 0.2); }
+
+.custom-checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    user-select: none;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 0;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0; width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 50%; left: 0;
+    transform: translateY(-50%);
+    height: 22px; width: 22px;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+}
+
+.custom-checkbox:hover input ~ .checkmark { border-color: var(--color-text-light); }
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: var(--color-text-light);
+    border-color: var(--color-text-light);
+}
+
+.checkmark:after { content: ""; position: absolute; display: none; }
+.custom-checkbox input:checked ~ .checkmark:after { display: block; }
+
+.custom-checkbox .checkmark:after {
+    left: 7px; top: 3px;
+    width: 5px; height: 10px;
+    border: solid var(--color-bg-dark);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.btn-submit { width: 100%; margin-top: var(--spacing-sm); }
+
+.btn-submit svg {
+    margin-left: 0.5rem;
+    transition: transform var(--transition-fast);
+}
+
+.btn-submit:hover svg { transform: translateX(5px) translateY(-5px); }
+
+/* Footer */
+.site-footer {
+    background-color: #0d1214;
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.footer-text { font-size: 0.9rem; color: var(--color-text-muted); }
+
+.social-link {
+    display: inline-flex;
+    padding: 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(37, 72, 87, 0.2);
+    color: var(--color-text-light);
+}
+
+/* Animations - only hidden when JS is ready */
+.js-ready .reveal-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+.js-ready .reveal-opacity { opacity: 0; transition: opacity 1s ease; }
+.reveal-up.visible { opacity: 1 !important; transform: translateY(0) !important; }
+.reveal-opacity.visible { opacity: 1 !important; }
+
+/* Background Graphic Elements */
+.bg-graphics {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.graphic-element {
+    position: absolute;
+    color: var(--color-primary);
+    opacity: 0.15;
+}
+
+.graphic-asterisk {
+    width: 120px; height: 120px;
+    top: 15%; left: 10%;
+    animation: rotateSlow 20s linear infinite;
+}
+
+.graphic-triangle {
+    width: 150px; height: 300px;
+    top: 40%; right: 5%;
+    animation: floatVertical 8s ease-in-out infinite;
+}
+
+.graphic-arrows {
+    width: 40px; height: 120px;
+    bottom: 20%; left: 5%;
+    opacity: 0.2;
+    animation: floatVertical 6s ease-in-out infinite reverse;
+}
+
+.graphic-flower {
+    width: 100px; height: 100px;
+    top: 70%; right: 15%;
+    animation: pulseSlow 4s ease-in-out infinite;
+}
+
+.graphic-web {
+    width: 250px; height: 250px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    animation: rotateSlow 40s linear infinite reverse;
+}
+
+@keyframes rotateSlow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes floatVertical {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-30px); }
+}
+
+@keyframes pulseSlow {
+    0%, 100% { transform: scale(1); opacity: 0.15; }
+    50% { transform: scale(1.1); opacity: 0.25; }
+}
+
+/* web star needs special override since it starts with transform */
+.graphic-web {
+    animation: rotateSlowCenter 40s linear infinite reverse;
+}
+
+@keyframes rotateSlowCenter {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+main, .site-header, .site-footer {
+    position: relative;
+    z-index: 10;
+}
+
+/* Section header spacing */
+.section-header { margin-bottom: var(--spacing-lg); }
+</style>
+</head>
+
+<body>
+
+    <!-- Background Graphic Elements -->
+    <div class="bg-graphics">
+        <svg class="graphic-element graphic-asterisk" viewBox="0 0 100 100" stroke="currentColor" stroke-width="10" stroke-linecap="square">
+            <line x1="50" y1="10" x2="50" y2="90" />
+            <line x1="10" y1="50" x2="90" y2="50" />
+            <line x1="22" y1="22" x2="78" y2="78" />
+            <line x1="22" y1="78" x2="78" y2="22" />
+        </svg>
+        <svg class="graphic-element graphic-triangle" viewBox="0 0 100 200" fill="currentColor">
+            <polygon points="20,100 90,180 90,20" />
+        </svg>
+        <svg class="graphic-element graphic-arrows" viewBox="0 0 50 150" fill="currentColor">
+            <polygon points="10,10 40,10 25,30" />
+            <polygon points="10,40 40,40 25,60" />
+            <polygon points="10,70 40,70 25,90" />
+            <polygon points="10,100 40,100 25,120" />
+        </svg>
+        <svg class="graphic-element graphic-flower" viewBox="0 0 100 100" fill="currentColor">
+            <path d="M50,10 C60,30 80,40 90,50 C80,60 60,70 50,90 C40,70 20,60 10,50 C20,40 40,30 50,10 Z" />
+        </svg>
+        <svg class="graphic-element graphic-web" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M50,5 Q60,40 95,50 Q60,60 50,95 Q40,60 5,50 Q40,40 50,5 Z" />
+            <path d="M50,15 Q55,40 85,50 Q55,60 50,85 Q45,60 15,50 Q45,40 50,15 Z" />
+            <path d="M50,25 Q52.5,45 75,50 Q52.5,55 50,75 Q47.5,55 25,50 Q47.5,45 50,25 Z" />
+        </svg>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo scroll-link">Th.</a>
+            <nav class="main-nav">
+                <a href="#sobre">Sobre</a>
+                <a href="#portfolio">Portfólio</a>
+                <a href="#servicos">Serviços</a>
+            </nav>
+            <a href="#contato" class="btn-primary btn-sm">Iniciar Projeto</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero -->
+        <section id="hero" class="hero-section">
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="sub-badge reveal-up">Posicionamento • Estratégia • Design</div>
+                    <h1 class="hero-title reveal-up">Design Estratégico para Marcas que Querem Crescer</h1>
+                    <p class="hero-subtitle reveal-up">Transformo presença digital em posicionamento, autoridade e crescimento consistente.</p>
+                    <div class="hero-actions reveal-up">
+                        <a href="#portfolio" class="btn-primary">Ver Projetos</a>
+                        <a href="https://wa.me/5549996423274" target="_blank" class="btn-secondary">Falar no WhatsApp</a>
+                    </div>
+                </div>
+                <div class="hero-graphic reveal-opacity">
+                    <div class="abstract-shape shape-1"></div>
+                    <div class="abstract-shape shape-2"></div>
+                    <div class="abstract-shape shape-3"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sobre -->
+        <section id="sobre" class="sobre-section">
+            <div class="container sobre-container">
+                <div class="sobre-content">
+                    <h2 class="section-title reveal-up">Posicionamento Antes de Estética</h2>
+                    <div class="sobre-text reveal-up">
+                        <p>Branding is not decoration. It is perception. It is authority. It is growth.</p>
+                        <p>A identidade visual da sua marca deve ser uma ferramenta estratégica de negócios, projetada para comunicar seu valor único no mercado e atrair os clientes certos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfólio -->
+        <section id="portfolio" class="portfolio-section">
+            <div class="container">
+                <div class="section-header reveal-up">
+                    <h2 class="section-title">Projetos Estratégicos</h2>
+                    <p class="section-subtitle">Onde estética encontra propósito.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <article class="project-card reveal-up">
+                        <div class="project-image-wrapper">
+                            <div class="project-placeholder"></div>
+                            <div class="project-overlay">Ver Projeto</div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Identidade Visual</span>
+                            <h3 class="project-title">Studio Aura</h3>
+                        </div>
+                    </article>
+                    <article class="project-card reveal-up" style="transition-delay: 0.1s;">
+                        <div class="project-image-wrapper">
+                            <div class="project-placeholder"></div>
+                            <div class="project-overlay">Ver Projeto</div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Social Media</span>
+                            <h3 class="project-title">Dr. Carlos Eduardo</h3>
+                        </div>
+                    </article>
+                    <article class="project-card reveal-up" style="transition-delay: 0.2s;">
+                        <div class="project-image-wrapper">
+                            <div class="project-placeholder"></div>
+                            <div class="project-overlay">Ver Projeto</div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Branding & Manual</span>
+                            <h3 class="project-title">Elevate Tech</h3>
+                        </div>
+                    </article>
+                    <article class="project-card reveal-up">
+                        <div class="project-image-wrapper">
+                            <div class="project-placeholder"></div>
+                            <div class="project-overlay">Ver Projeto</div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Reels / TikTok</span>
+                            <h3 class="project-title">Arquitetura Viva</h3>
+                        </div>
+                    </article>
+                    <article class="project-card reveal-up" style="transition-delay: 0.1s;">
+                        <div class="project-image-wrapper">
+                            <div class="project-placeholder"></div>
+                            <div class="project-overlay">Ver Projeto</div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Logo</span>
+                            <h3 class="project-title">Café Essência</h3>
+                        </div>
+                    </article>
+                    <article class="project-card reveal-up" style="transition-delay: 0.2s;">
+                        <div class="project-image-wrapper">
+                            <div class="project-placeholder"></div>
+                            <div class="project-overlay">Ver Projeto</div>
+                        </div>
+                        <div class="project-info">
+                            <span class="project-tag">Identidade Visual</span>
+                            <h3 class="project-title">Clínica Vitalize</h3>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços -->
+        <section id="servicos" class="servicos-section">
+            <div class="container container-narrow">
+                <div class="section-header text-center reveal-up">
+                    <h2 class="section-title">Estratégias de Crescimento</h2>
+                </div>
+                <div class="servicos-list">
+                    <div class="servico-item reveal-up">
+                        <h3>Criação de Logotipo</h3>
+                        <p>O símbolo visual da sua autoridade no mercado.</p>
+                    </div>
+                    <div class="servico-item reveal-up">
+                        <h3>Identidade Visual Completa</h3>
+                        <p>Um sistema visual coerente que constrói reconhecimento e confiança.</p>
+                    </div>
+                    <div class="servico-item reveal-up">
+                        <h3>Manual de Marca</h3>
+                        <p>Diretrizes claras para manter a consistência da sua marca em todos os pontos de contato.</p>
+                    </div>
+                    <div class="servico-item reveal-up">
+                        <h3>Design para Reels & TikTok</h3>
+                        <p>Criativos dinâmicos projetados para engajar e converter em vídeo curto.</p>
+                    </div>
+                    <div class="servico-item reveal-up">
+                        <h3>Social Media Estratégico</h3>
+                        <p>Posicionamento de alto nível constante nas suas redes sociais.</p>
+                    </div>
+                    <div class="servico-item reveal-up">
+                        <h3>Posicionamento de Marca</h3>
+                        <p>Estratégia profunda para definir voz, arquétipo e lugar no mercado.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contato / Formulário -->
+        <section id="contato" class="contato-section">
+            <div class="container container-form reveal-up">
+                <div class="contato-header">
+                    <h2 class="section-title">Inicie sua Transformação</h2>
+                    <p class="section-subtitle">Preencha o briefing estratégico abaixo para direcionar seu atendimento.</p>
+                </div>
+                <form id="strategic-form" class="strategic-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required placeholder="Seu nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="empresa">Nome da sua empresa</label>
+                            <input type="text" id="empresa" name="empresa" required placeholder="Sua marca ou negócio">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="instagram">Instagram</label>
+                            <input type="text" id="instagram" name="instagram" placeholder="@seuperfil">
+                        </div>
+                        <div class="form-group">
+                            <label for="whatsapp">WhatsApp</label>
+                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="(XX) XXXXX-XXXX">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="paleta">Paleta de cores desejada (Opcional)</label>
+                        <input type="text" id="paleta" name="paleta" placeholder="Ex: Tons escuros, minimalista, vibrante...">
+                    </div>
+                    <div class="form-group form-group-checkboxes">
+                        <label>Do que você precisa?</label>
+                        <div class="custom-checkbox-grid">
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="Logo"><span class="checkmark"></span><span class="check-label">Logo</span></label>
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="Identidade Visual"><span class="checkmark"></span><span class="check-label">Identidade Visual</span></label>
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="Manual de Marca"><span class="checkmark"></span><span class="check-label">Manual de Marca</span></label>
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="Reels"><span class="checkmark"></span><span class="check-label">Reels</span></label>
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="Post Instagram"><span class="checkmark"></span><span class="check-label">Post Instagram</span></label>
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="TikTok"><span class="checkmark"></span><span class="check-label">TikTok</span></label>
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="Social Media"><span class="checkmark"></span><span class="check-label">Social Media</span></label>
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="Branding Completo"><span class="checkmark"></span><span class="check-label">Branding Completo</span></label>
+                            <label class="custom-checkbox"><input type="checkbox" name="servicos" value="Outro"><span class="checkmark"></span><span class="check-label">Outro</span></label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Descreva seu projeto</label>
+                        <textarea id="mensagem" name="mensagem" rows="4" required placeholder="Quais são seus desafios atuais e objetivos?"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary btn-submit">
+                        Enviar para o WhatsApp
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="footer-logo" style="font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;letter-spacing:-0.05em;">Th.</div>
+            <p class="footer-text">© 2026 Th. Design Estratégico. Todos os direitos reservados.</p>
+            <div class="footer-social">
+                <a href="https://www.instagram.com/thdomkt?igsh=MTNpZDJrYXBwN3dweQ==" target="_blank" class="social-link" aria-label="Instagram">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* Mark body as JS ready so animations activate */
+    document.body.classList.add('js-ready');
+
+    /* Header Scroll Effect */
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    /* Smooth Scroll Links */
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            if (targetId === '#') { window.scrollTo({ top: 0, behavior: 'smooth' }); return; }
+            const target = document.querySelector(targetId);
+            if (target) {
+                const top = target.getBoundingClientRect().top + window.scrollY - 100;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        });
+    });
+
+    /* Scroll Reveal with IntersectionObserver */
+    const heroEls = document.querySelectorAll('#hero .reveal-up, #hero .reveal-opacity');
+    let delay = 0;
+    heroEls.forEach(el => {
+        setTimeout(() => el.classList.add('visible'), delay);
+        delay += 180;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal-up:not(#hero .reveal-up), .reveal-opacity:not(#hero .reveal-opacity)').forEach(el => {
+        observer.observe(el);
+    });
+
+    /* Form → WhatsApp */
+    const form = document.getElementById('strategic-form');
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value.trim();
+            const empresa = document.getElementById('empresa').value.trim();
+            const instagram = document.getElementById('instagram').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const paleta = document.getElementById('paleta').value.trim() || 'Nenhuma informada';
+            const mensagem = document.getElementById('mensagem').value.trim();
+
+            const checkboxes = document.querySelectorAll('input[name="servicos"]:checked');
+            const servicosDesejados = Array.from(checkboxes).map(b => b.value);
+            const servicosStr = servicosDesejados.length > 0 ? servicosDesejados.join(', ') : 'Nenhum serviço específico selecionado';
+
+            const textoMensagem = `*NOVO PROJETO ESTRATÉGICO* 🚀\n\n*Nome:* ${nome}\n*Empresa:* ${empresa}\n*Instagram:* ${instagram || 'Não informado'}\n*WhatsApp:* ${whatsapp || 'Não informado'}\n\n*Serviços de Interesse:*\n${servicosStr}\n\n*Direção Visual / Paleta:*\n${paleta}\n\n*Detalhes do Projeto:*\n${mensagem}`.trim();
+
+            window.open(`https://wa.me/5549996423274?text=${encodeURIComponent(textoMensagem)}`, '_blank');
+        });
+    }
+});
+</script>
+</body>
+</html>
