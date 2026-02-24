@@ -1,0 +1,871 @@
+@charset "UTF-8";
+
+/* ==========================================================================
+   TH DESIGN - Strategic Branding Positioning
+   ========================================================================== */
+
+:root {
+    /* Color Palette */
+    --color-bg-dark: #182125;
+    --color-bg-light: #253439;
+    --color-primary: #254857;
+    --color-text-light: #FFFFFF;
+    --color-text-dark: #000000;
+    --color-text-muted: rgba(255, 255, 255, 0.7);
+    --color-border: rgba(255, 255, 255, 0.1);
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Nunito Sans', sans-serif;
+
+    /* Spacing & Layout */
+    --container-width: 1200px;
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+
+    /* Transitions */
+    --transition-fast: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-smooth: 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ==========================================================================
+   Reset & Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: initial;
+    /* Handled by Lenis */
+    font-size: 16px;
+}
+
+body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+ul {
+    list-style: none;
+}
+
+/* ==========================================================================
+   Typography Classes
+   ========================================================================== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    font-weight: 400;
+    line-height: 1.2;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    letter-spacing: -0.02em;
+    margin-bottom: var(--spacing-md);
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    font-weight: 300;
+    margin-bottom: var(--spacing-lg);
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* ==========================================================================
+   Layout & Containers
+   ========================================================================== */
+.container {
+    width: 100%;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.container-narrow {
+    max-width: 900px;
+}
+
+.container-form {
+    max-width: 800px;
+}
+
+section {
+    padding: var(--spacing-xl) 0;
+    position: relative;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+.btn-primary,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2rem;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border: none;
+    transition: all var(--transition-smooth);
+    position: relative;
+    overflow: hidden;
+    gap: 0.5rem;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background-color: #1a333d;
+    transition: height var(--transition-smooth);
+    z-index: 0;
+}
+
+.btn-primary:hover::after {
+    height: 100%;
+}
+
+.btn-primary span,
+.btn-primary svg,
+.btn-primary::before {
+    position: relative;
+    z-index: 1;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-border);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.btn-sm {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   Header / Nav
+   ========================================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: var(--spacing-md) 0;
+    z-index: 100;
+    transition: background-color var(--transition-fast), padding var(--transition-fast);
+}
+
+.site-header.scrolled {
+    background-color: rgba(24, 33, 37, 0.95);
+    backdrop-filter: blur(10px);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    color: var(--color-text-light);
+}
+
+.main-nav {
+    display: none;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .main-nav {
+        display: flex;
+    }
+}
+
+.main-nav a {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--color-text-light);
+    transition: width var(--transition-smooth);
+}
+
+.main-nav a:hover {
+    opacity: 1;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+    /* Offset for header */
+}
+
+.hero-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+@media (min-width: 992px) {
+    .hero-container {
+        grid-template-columns: 1.2fr 0.8fr;
+    }
+}
+
+.sub-badge {
+    display: inline-block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: var(--spacing-md);
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-primary);
+    background-color: rgba(37, 72, 87, 0.1);
+    color: var(--color-primary);
+    border-radius: 2px;
+}
+
+.hero-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.5rem);
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+    max-width: 600px;
+    font-weight: 300;
+}
+
+.hero-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+/* Abstract Graphic Elements */
+.hero-graphic {
+    position: relative;
+    height: 400px;
+    display: none;
+    /* Hide on mobile to save space */
+}
+
+@media (min-width: 992px) {
+    .hero-graphic {
+        display: block;
+    }
+}
+
+.abstract-shape {
+    position: absolute;
+    border: 1px solid var(--color-primary);
+    opacity: 0.5;
+    transition: transform 0.5s ease-out;
+}
+
+.shape-1 {
+    width: 300px;
+    height: 400px;
+    top: 0;
+    right: 50px;
+    border-radius: 200px 200px 0 0;
+    background: linear-gradient(135deg, rgba(37, 72, 87, 0.2) 0%, rgba(24, 33, 37, 0) 100%);
+}
+
+.shape-2 {
+    width: 150px;
+    height: 150px;
+    bottom: 50px;
+    left: 0;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shape-3 {
+    width: 200px;
+    height: 100px;
+    top: 100px;
+    right: -20px;
+    border: 1px solid var(--color-primary);
+}
+
+/* ==========================================================================
+   Sobre Section
+   ========================================================================== */
+.sobre-section {
+    background-color: var(--color-bg-light);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.sobre-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.sobre-text p {
+    font-size: clamp(1.25rem, 2vw, 1.875rem);
+    font-weight: 300;
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-muted);
+}
+
+.sobre-text p:first-child {
+    font-family: var(--font-heading);
+    color: var(--color-text-light);
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+/* ==========================================================================
+   Portfolio Section
+   ========================================================================== */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    group: card;
+}
+
+.project-image-wrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/5;
+    background-color: var(--color-bg-light);
+    overflow: hidden;
+}
+
+/* Placeholder gradient until images are added */
+.project-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--color-bg-dark), var(--color-bg-light));
+    transition: transform var(--transition-smooth);
+}
+
+.project-card:hover .project-placeholder {
+    transform: scale(1.05);
+}
+
+.project-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(24, 33, 37, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-style: italic;
+    backdrop-filter: blur(2px);
+}
+
+.project-card:hover .project-overlay {
+    opacity: 1;
+}
+
+.project-info {
+    padding-top: var(--spacing-xs);
+}
+
+.project-tag {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-primary);
+    margin-bottom: 0.25rem;
+    display: block;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin: 0;
+    transition: color var(--transition-fast);
+}
+
+.project-card:hover .project-title {
+    color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Serviços Section
+   ========================================================================== */
+.servicos-section {
+    background-color: var(--color-bg-light);
+}
+
+.servicos-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.servico-item {
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid var(--color-border);
+    transition: padding var(--transition-smooth);
+}
+
+.servico-item:first-child {
+    border-top: 1px solid var(--color-border);
+}
+
+.servico-item h3 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 0.5rem;
+    transition: color var(--transition-fast);
+}
+
+.servico-item p {
+    color: var(--color-text-muted);
+    font-weight: 300;
+    max-width: 600px;
+}
+
+.servico-item:hover {
+    padding-left: var(--spacing-sm);
+}
+
+.servico-item:hover h3 {
+    color: var(--color-primary);
+    font-style: italic;
+}
+
+/* ==========================================================================
+   Formulário Estratégico Section
+   ========================================================================== */
+.contato-section {
+    background-color: var(--color-bg-dark);
+}
+
+.contato-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.strategic-form {
+    background-color: var(--color-bg-light);
+    padding: var(--spacing-lg);
+    border: 1px solid var(--color-border);
+}
+
+@media (max-width: 768px) {
+    .strategic-form {
+        padding: var(--spacing-md);
+    }
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+}
+
+input[type="text"],
+input[type="tel"],
+textarea {
+    width: 100%;
+    padding: 1rem;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-light);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background-color: rgba(37, 72, 87, 0.05);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.2);
+}
+
+/* Custom Checkbox Grid */
+.custom-checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 1rem;
+    margin-top: 0.5rem;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+    user-select: none;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 0;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    height: 22px;
+    width: 22px;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    transition: all var(--transition-fast);
+}
+
+.custom-checkbox:hover input~.checkmark {
+    border-color: var(--color-text-light);
+}
+
+.custom-checkbox input:checked~.checkmark {
+    background-color: var(--color-text-light);
+    border-color: var(--color-text-light);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.custom-checkbox input:checked~.checkmark:after {
+    display: block;
+}
+
+.custom-checkbox .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid var(--color-bg-dark);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.btn-submit {
+    width: 100%;
+    margin-top: var(--spacing-sm);
+}
+
+.btn-submit svg {
+    margin-left: 0.5rem;
+    transition: transform var(--transition-fast);
+}
+
+.btn-submit:hover svg {
+    transform: translateX(5px) translateY(-5px);
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+.site-footer {
+    background-color: #0d1214;
+    /* Even darker than base bg */
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--color-border);
+}
+
+.footer-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footer-inner {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+}
+
+.social-link {
+    display: inline-flex;
+    padding: 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.social-link:hover {
+    border-color: var(--color-primary);
+    background-color: rgba(37, 72, 87, 0.2);
+    color: var(--color-text-light);
+}
+
+/* ==========================================================================
+   Lenis Global
+   ========================================================================== */
+html.lenis,
+html.lenis body {
+    height: auto;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+    pointer-events: none;
+}
+
+/* ==========================================================================
+   Animation Initial States (Handled by GSAP later)
+   ========================================================================== */
+.reveal-up {
+    visibility: hidden;
+    /* Prevent FOUC, GSAP will handle */
+}
+
+.reveal-opacity {
+    opacity: 0;
+}
+
+/* ==========================================================================
+   Floating Graphic Elements
+   ========================================================================== */
+.bg-graphics {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.graphic-element {
+    position: absolute;
+    color: var(--color-primary);
+    opacity: 0.15;
+}
+
+.graphic-asterisk {
+    width: 120px;
+    height: 120px;
+    top: 15%;
+    left: 10%;
+    animation: rotateSlow 20s linear infinite;
+}
+
+.graphic-triangle {
+    width: 150px;
+    height: 300px;
+    top: 40%;
+    right: 5%;
+    animation: floatVertical 8s ease-in-out infinite;
+}
+
+.graphic-arrows {
+    width: 40px;
+    height: 120px;
+    bottom: 20%;
+    left: 5%;
+    opacity: 0.2;
+    animation: floatVertical 6s ease-in-out infinite reverse;
+}
+
+.graphic-flower {
+    width: 100px;
+    height: 100px;
+    top: 70%;
+    right: 15%;
+    animation: pulseSlow 4s ease-in-out infinite;
+}
+
+.graphic-web {
+    width: 250px;
+    height: 250px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;
+    animation: rotateSlow 40s linear infinite reverse;
+}
+
+@keyframes rotateSlow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes floatVertical {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-30px);
+    }
+}
+
+@keyframes pulseSlow {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 0.15;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.25;
+    }
+}
+
+/* Ensure background elements sit behind everything but main content remains readable */
+main,
+.site-header,
+.site-footer {
+    position: relative;
+    z-index: 10;
+}
